@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recolección de Datos</title>
+</head>
+<body>
+  Nombre: 
+  <input type="text" id="nombre"><br>
+  Rut: 
+  <input type="text" name="numpiso" id="rut" onkeypress="return numeros(event)"><br>
+  Cuenta con Cuenta Corriente?  
+  <input type="checkbox" name="cuentaCorriente" id="cuentaCorriente"><br>
+  <input type="button" value="enviar" onclick="validar();" >
+
+  <script type="text/javascript">
+
+ 
+   // param x = 
+   // @param y: RUT del cliente
+
+   function numeros(e){
+   var tecla = e.keyCode;
+
+    if (tecla==8 || tecla==9 || tecla==13){
+        return true;
+    }
+        
+    var patron =/[0-9]/;
+    var tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+   
+  
+function validar(x,y) {
+   var x= document.getElementById("nombre").value;
+   var y= document.getElementById("rut").value;
+   var z= document.getElementById("cuentaCorriente").checked;
+  
+ 
+  if (x == ''|| y=='') {
+    alert('Debe ingresar Nombre o Rut');
+  }else if(Number.parseInt(y)==true){
+    alert('El RUT no Es valido');
+  }else if (z==false) {
+    document.write('Nombre: '+ x + '<br> Rut: '+ y + '<br> No tiene CC' );
+  }else{
+    respuesta = document.write('Nombre: '+ x + '<br> Rut: '+ y + '<br> Si tiene CC' );
+  }
+ 
+  return respuesta;
+}    
+    </script>
+
+
+
+</body>
+</html>
